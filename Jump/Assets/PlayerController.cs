@@ -34,12 +34,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            player.transform.Translate(playerMoveSpeed*playerBoost, 0, 0);
+            player.transform.Translate(playerMoveSpeed, 0, 0);
         }
 
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            player.transform.Translate(-playerMoveSpeed*playerBoost, 0, 0);
+            player.transform.Translate(-playerMoveSpeed, 0, 0);
         }
     }
 
@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
         float randomDirectionY = Random.Range(minBackBounceY, maxBackBounceY);
         Vector2 randomDirection = new Vector2(randomDirectionX, randomDirectionY);
         float randomJumpForce = Random.Range(minBackBounceForce, maxBackBounceForce);
+        Debug.Log("nowForce : " + randomJumpForce);
         Vector2 jumpForceVector = randomDirection.normalized *randomJumpForce;
 
         playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
