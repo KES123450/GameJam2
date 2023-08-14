@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        Vector3 cameraPos = new Vector3(player.position.x, player.position.y, -10);
+        Vector3 cameraPos = new Vector3(player.position.x, player.position.y+3f, -10);
         transform.position = cameraPos;
     }
 }

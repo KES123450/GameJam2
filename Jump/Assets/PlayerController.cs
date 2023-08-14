@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 jumpDirection;
     public float jumpForce;
     public float jumpLimitTime;
+    public int maxJumpStep;
     private float jumpTimer;
 
     public float minBackBounceX;
@@ -57,7 +58,20 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Vector2 jumpForceVector = jumpDirection.normalized * jumpTimer *jumpForce;
+            float interval = jumpLimitTime / (float)maxJumpStep;
+            Debug.Log("interval"+interval);
+            float jumpStep=0;
+            for(int i=0; i < maxJumpStep; i++)
+            {
+                if (jumpStep >= jumpTimer)
+                {
+                    break;
+                }
+                jumpStep += interval;
+            }
+            Debug.Log(jumpStep);
+
+            Vector2 jumpForceVector = jumpDirection.normalized * jumpStep *jumpForce;
             playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
             jumpTimer = 0;
 
