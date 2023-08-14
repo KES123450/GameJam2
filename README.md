@@ -1,5 +1,8 @@
 # KRAFTONJUNGLEWEEK01_01
 
+[노션 링크](https://www.notion.so/Jump-225b1577bd2840fdaafcc8fb3d9c474a?pvs=4)
+
+
 MEMO
 1.	순발력
 2.	조작감
