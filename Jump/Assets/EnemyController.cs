@@ -44,8 +44,6 @@ public class EnemyController : MonoBehaviour
 
     void getLeftPosition()
     {
-        print("newPos");
-
         targetPosition = new Vector2(originPosition.x + EnemyPatrolDistanceMin, originPosition.y);
            
     }
