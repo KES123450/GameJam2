@@ -1765,8 +1765,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8858981213615540127, guid: cc2dbb35abb8192499b421984f6c90db, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2dbb35abb8192499b421984f6c90db, type: 3}
 --- !u!1 &870350287
 GameObject:
@@ -2459,7 +2458,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerRigid: {fileID: 0}
-  playerMaxVelocity: 20
   playerMoveSpeed: 40
   playerMaxSpeed: 5
   jumpDirection: {x: 1, y: 1.5}
