@@ -50,14 +50,4 @@ public class EnemyController : MonoBehaviour
     }
 
 
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(new Vector3(originPosition.x + EnemyPatrolDistanceMin, originPosition.y), Vector3.forward);
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(new Vector3(originPosition.x + EnemyPatrolDistanceMax, originPosition.y), Vector3.forward);
-
-    }
-
 }
