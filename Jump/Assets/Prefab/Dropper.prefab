@@ -121,12 +121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3a8975b7b31b14fa26bf91b7e9c6a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minBackBounceX: 0
+  minBackBounceX: -1
   maxBackBounceX: 0
   minBackBounceY: 0
-  maxBackBounceY: 0
-  maxBackBounceForce: 0
-  minBackBounceForce: 0
+  maxBackBounceY: 1
+  maxBackBounceForce: 13
+  minBackBounceForce: 15
 --- !u!114 &6917669294621768265
 MonoBehaviour:
   m_ObjectHideFlags: 0
