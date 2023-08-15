@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public void onClickedStartButton()
     {
         Time.timeScale = 1;
+        isPause = false;
         pauseUI.SetActive(false);
         startUI.SetActive(false);
     }

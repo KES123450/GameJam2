@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject player;
     public Rigidbody2D playerRigid;
+    public float playerMaxVelocity;
     public float playerMoveSpeed;
     public float playerMaxSpeed;
     public Vector2 jumpDirection;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public float maxBackBounceForce;
     public float minBackBounceForce;
 
+    public GameObject fullJumpNotice;
 
     void Start()
     {
@@ -68,6 +70,10 @@ public class PlayerController : MonoBehaviour
                     jumpTimer += Time.deltaTime;
                     Debug.Log(jumpTimer);
                 }
+                else
+                {
+                    fullJumpNotice.SetActive(true);
+                }
 
             }
 
@@ -88,6 +94,7 @@ public class PlayerController : MonoBehaviour
 
                 Vector2 jumpForceVector = jumpDirection.normalized * jumpStep * jumpForce;
                 playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
+                fullJumpNotice.SetActive(false);
                 jumpTimer = 0;
 
             }
@@ -115,8 +122,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void LimitPlayerVelocity()
+    {
+        if (playerRigid.velocity.magnitude > playerMaxVelocity)
+        {
+            playerRigid.velocity = playerRigid.velocity.normalized * playerMaxVelocity;
+        }
+    }
+
     void Update()
     {
+        LimitPlayerVelocity();
         PlayerJump();
     }
 
