@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         originPosition = transform.position;
-        getNewPosition();
+        getLeftPosition();
         StartCoroutine(EnemyPatrol());
     }
 
@@ -28,7 +28,9 @@ public class EnemyController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(EnemyPatrolTime);
-            getNewPosition();
+            getLeftPosition();
+            yield return new WaitForSeconds(EnemyPatrolTime);
+            getRightPosition();
 
         }
     }
@@ -40,13 +42,17 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    void getNewPosition()
+    void getLeftPosition()
     {
         print("newPos");
 
-        targetPosition = 
-            new Vector2(originPosition.x + Random.Range(EnemyPatrolDistanceMin, EnemyPatrolDistanceMax), 
-            originPosition.y);
+        targetPosition = new Vector2(originPosition.x + EnemyPatrolDistanceMin, originPosition.y);
+           
+    }
+
+    void getRightPosition()
+    {
+        targetPosition = new Vector2(originPosition.x + EnemyPatrolDistanceMax, originPosition.y);
     }
 
 
