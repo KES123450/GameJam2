@@ -8,8 +8,10 @@ public class PlayerController : MonoBehaviour
     public GameObject player;
     public Rigidbody2D playerRigid;
     public float playerMoveSpeed;
-    public float playerBoost;
+    public float playerMaxSpeed;
     public Vector2 jumpDirection;
+    public bool isPlayerJump;
+    public bool isPlayerMove;
     public float jumpForce;
     public float jumpLimitTime;
     public int maxJumpStep;
@@ -33,49 +35,64 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMove()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (isPlayerMove)
         {
-            player.transform.Translate(playerMoveSpeed, 0, 0);
-        }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                if (playerRigid.velocity.magnitude < playerMaxSpeed)
+                {
+                    playerRigid.AddForce(Vector2.right * playerMoveSpeed);
+                }
+                
+            }
 
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            player.transform.Translate(-playerMoveSpeed, 0, 0);
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                if (playerRigid.velocity.magnitude < playerMaxSpeed)
+                {
+                    playerRigid.AddForce(-Vector2.right * playerMoveSpeed);
+                }
+            }
         }
+        
     }
 
     void PlayerJump()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (isPlayerJump)
         {
-            if (jumpTimer < jumpLimitTime)
+            if (Input.GetKey(KeyCode.Space))
             {
-                jumpTimer += Time.deltaTime;
-                Debug.Log(jumpTimer);
-            }
-            
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            float interval = jumpLimitTime / (float)maxJumpStep;
-            Debug.Log("interval"+interval);
-            float jumpStep=0;
-            for(int i=0; i < maxJumpStep; i++)
-            {
-                if (jumpStep >= jumpTimer)
+                if (jumpTimer < jumpLimitTime)
                 {
-                    break;
+                    jumpTimer += Time.deltaTime;
+                    Debug.Log(jumpTimer);
                 }
-                jumpStep += interval;
+
             }
-            Debug.Log(jumpStep);
 
-            Vector2 jumpForceVector = jumpDirection.normalized * jumpStep *jumpForce;
-            playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
-            jumpTimer = 0;
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                float interval = jumpLimitTime / (float)maxJumpStep;
+                Debug.Log("interval" + interval);
+                float jumpStep = 0;
+                for (int i = 0; i < maxJumpStep; i++)
+                {
+                    if (jumpStep >= jumpTimer)
+                    {
+                        break;
+                    }
+                    jumpStep += interval;
+                }
+                Debug.Log(jumpStep);
 
+                Vector2 jumpForceVector = jumpDirection.normalized * jumpStep * jumpForce;
+                playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
+                jumpTimer = 0;
+
+            }
         }
+        
     }
 
     void PlayerBounceBack()
