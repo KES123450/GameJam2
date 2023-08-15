@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject player;
     public Rigidbody2D playerRigid;
+    public float playerFallGravityScale;
     public float playerMaxVelocity;
     public float playerMoveSpeed;
     public float playerMaxSpeed;
@@ -130,10 +131,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ControlPlayerGravityScale()
+    {
+        if (playerRigid.velocity.y < 0)
+        {
+            playerRigid.gravityScale = playerFallGravityScale;
+        }
+        else
+        {
+            playerRigid.gravityScale =1;
+        }
+    }
+
     void Update()
     {
         LimitPlayerVelocity();
         PlayerJump();
+        ControlPlayerGravityScale();
     }
 
     void FixedUpdate()

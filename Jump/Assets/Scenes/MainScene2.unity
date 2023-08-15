@@ -1371,6 +1371,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7247665497415280184, guid: 8e30e26ef10ff1144b44c8822461d316, type: 3}
   m_PrefabInstance: {fileID: 1846956622}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &226842766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 15660982331757964, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+  m_PrefabInstance: {fileID: 376925620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &226842770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226842766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465aebfa0bc0d6d48b597d1aacf87e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyStartHidingTime: 0
+  EnemyHidingTime: 3
+  EnemyShowingTime: 1
+  HidingSpeed: 0.01
 --- !u!1 &256642274
 GameObject:
   m_ObjectHideFlags: 0
@@ -6219,6 +6240,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e30e26ef10ff1144b44c8822461d316, type: 3}
+--- !u!1 &1235042318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6763603542545929352, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+  m_PrefabInstance: {fileID: 376925620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1235042322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235042318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465aebfa0bc0d6d48b597d1aacf87e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyStartHidingTime: 0
+  EnemyHidingTime: 3
+  EnemyShowingTime: 1
+  HidingSpeed: 0.01
 --- !u!4 &1240446358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7247665497415280184, guid: a81f0e898f6166d41a96700a240fba14, type: 3}
@@ -7103,6 +7145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1506462682}
   playerRigid: {fileID: 1506462685}
+  playerFallGravityScale: 1
   playerMaxVelocity: 20
   playerMoveSpeed: 40
   playerMaxSpeed: 5
@@ -7800,6 +7843,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5145720160889761089, guid: db9f437c43b2c1c4fb7efc748119f802, type: 3}
   m_PrefabInstance: {fileID: 677556207}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1608764856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5270453677287889658, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+  m_PrefabInstance: {fileID: 376925620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1608764860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608764856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465aebfa0bc0d6d48b597d1aacf87e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyStartHidingTime: 0
+  EnemyHidingTime: 3
+  EnemyShowingTime: 1
+  HidingSpeed: 0.01
 --- !u!1 &1618826642
 GameObject:
   m_ObjectHideFlags: 0
