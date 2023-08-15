@@ -14,11 +14,19 @@ public class HidingEnemyController : MonoBehaviour
     private float HidingSpeed;
 
     private Vector3 targetScale;
-    PolygonCollider2D myCollider;
+    PolygonCollider2D myPolygonCollider;
+    BoxCollider2D myBoxCollider;
+    Collider2D myCollider;
 
     private void Start()
     {
-        myCollider = GetComponent<PolygonCollider2D>();
+        myPolygonCollider = GetComponent<PolygonCollider2D>();
+        myCollider = myPolygonCollider;
+        if (myPolygonCollider == null)
+        {
+            myBoxCollider = GetComponent<BoxCollider2D>();
+            myCollider = myBoxCollider;
+        }
         targetScale = Vector3.one;
         StartCoroutine(EnemyHide());
     }
