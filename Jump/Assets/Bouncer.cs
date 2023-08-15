@@ -24,7 +24,6 @@ public class Bouncer : MonoBehaviour
         float randomDirectionY = Random.Range(minBackBounceY, maxBackBounceY);
         Vector2 randomDirection = new Vector2(randomDirectionX, randomDirectionY);
         float randomJumpForce = Random.Range(minBackBounceForce, maxBackBounceForce);
-        Debug.Log("nowForce : " + randomJumpForce);
         Vector2 jumpForceVector = randomDirection.normalized * randomJumpForce;
 
         rb.AddForce(jumpForceVector, ForceMode2D.Impulse);
