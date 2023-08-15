@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject player;
     public Rigidbody2D playerRigid;
+    public float playerMaxVelocity;
     public float playerMoveSpeed;
     public float playerMaxSpeed;
     public Vector2 jumpDirection;
@@ -121,8 +122,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void LimitPlayerVelocity()
+    {
+        if (playerRigid.velocity.magnitude > playerMaxVelocity)
+        {
+            playerRigid.velocity = playerRigid.velocity.normalized * playerMaxVelocity;
+        }
+    }
+
     void Update()
     {
+        LimitPlayerVelocity();
         PlayerJump();
     }
 
