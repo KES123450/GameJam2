@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject startUI;
     [SerializeField] public GameObject pauseUI;
     bool isPause = false;
+    [SerializeField] [Range(0f, 5f)] public float playTimeScale;
 
     private void Start()
     {
-        GameStart();   
+        GameStart();
+        Time.timeScale = playTimeScale;
     }
     private void Update()
     {
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     public void onClickedStartButton()
     {
-        Time.timeScale = 1;
+        Time.timeScale = playTimeScale;
         isPause = false;
         pauseUI.SetActive(false);
         startUI.SetActive(false);
@@ -47,7 +49,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Time.timeScale = 1;
+                Time.timeScale = playTimeScale;
                 isPause = false;
                 pauseUI.SetActive(false);
                 return;
