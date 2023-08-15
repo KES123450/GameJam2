@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float maxBackBounceForce;
     public float minBackBounceForce;
 
+    public GameObject fullJumpNotice;
 
     void Start()
     {
@@ -68,6 +69,10 @@ public class PlayerController : MonoBehaviour
                     jumpTimer += Time.deltaTime;
                     Debug.Log(jumpTimer);
                 }
+                else
+                {
+                    fullJumpNotice.SetActive(true);
+                }
 
             }
 
@@ -88,6 +93,7 @@ public class PlayerController : MonoBehaviour
 
                 Vector2 jumpForceVector = jumpDirection.normalized * jumpStep * jumpForce;
                 playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
+                fullJumpNotice.SetActive(false);
                 jumpTimer = 0;
 
             }
