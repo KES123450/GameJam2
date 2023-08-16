@@ -13,10 +13,9 @@ public class HintCircleController : MonoBehaviour
     public float finalMove = 5f;
     public float shrinkValue = 0.5f;
     private Rigidbody2D rb;
-    public float DirectionX;
-    public float DirectionY;
+    public Vector2 JumpForceVector;
 
-    public float randomJumpForce;
+    public float JumpForce;
     private bool isJumping = false;
 
     public float exclamationPointTime = 0.5f;
@@ -40,19 +39,19 @@ public class HintCircleController : MonoBehaviour
 
         exclamationPointMask.transform.DOLocalMoveY(gaugeUpPos, exclamationPointTime).OnComplete(() =>
         {
-            exclamationPoint.SetActive(false);
+            transform.DOMoveX(transform.position.x + initialMove, 1f)
+                .SetEase(Ease.Linear)
+                .OnComplete(() => StartBounce());
+
         });
 
-        transform.DOMoveX(transform.position.x + initialMove, 1f)
-            .SetEase(Ease.Linear)
-            .OnComplete(() => StartBounce());
+
     }
 
     private void StartBounce()
     {
-       
-        Vector2 randomDirection = new Vector2(DirectionX, DirectionY);
-        Vector2 jumpForceVector = randomDirection.normalized * randomJumpForce;
+        exclamationPoint.SetActive(false);
+        Vector2 jumpForceVector = JumpForceVector.normalized * JumpForce;
 
         rb.AddForce(jumpForceVector, ForceMode2D.Impulse);
 
@@ -73,7 +72,5 @@ public class HintCircleController : MonoBehaviour
                 MoveStraight();
         }
     }
-
-    
 
 }
