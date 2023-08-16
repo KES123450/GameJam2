@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     public float maxBackBounceForce;
     public float minBackBounceForce;
 
-    public GameObject fullJumpNotice;
+    public ForceGameController forceGameController;
+
 
     void Start()
     {
@@ -64,22 +65,28 @@ public class PlayerController : MonoBehaviour
     {
         if (isPlayerJump)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                forceGameController.gameObject.SetActive(true);
+                forceGameController.IncreaseSpeedGauge(jumpLimitTime*1.5f);
+            }
+
             if (Input.GetKey(KeyCode.Space))
             {
+                
                 if (jumpTimer < jumpLimitTime)
                 {
                     jumpTimer += Time.deltaTime;
                     Debug.Log(jumpTimer);
                 }
-                else
-                {
-                    fullJumpNotice.SetActive(true);
-                }
+                
 
             }
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                forceGameController.InitGauge();
+                forceGameController.gameObject.SetActive(false);
                 float interval = jumpLimitTime / (float)maxJumpStep;
                 Debug.Log("interval" + interval);
                 float jumpStep = 0;
@@ -95,7 +102,6 @@ public class PlayerController : MonoBehaviour
 
                 Vector2 jumpForceVector = jumpDirection.normalized * jumpStep * jumpForce;
                 playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
-                fullJumpNotice.SetActive(false);
                 jumpTimer = 0;
 
             }
