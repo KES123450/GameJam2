@@ -14,10 +14,11 @@ public class PlayerController : MonoBehaviour
     public Vector2 jumpDirection;
     public bool isPlayerJump;
     public bool isPlayerMove;
+    private bool isGrounded;
     public float jumpForce;
     public float jumpLimitTime;
     public int maxJumpStep;
-    private float jumpTimer;
+    public float jumpTimer;
 
     public float minBackBounceX;
     public float maxBackBounceX;
@@ -68,27 +69,26 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 forceGameController.gameObject.SetActive(true);
-                forceGameController.IncreaseSpeedGauge(jumpLimitTime*1.5f);
+                forceGameController.IncreaseSpeedGauge(jumpLimitTime);
+                isGrounded = true;
             }
 
             if (Input.GetKey(KeyCode.Space))
             {
-                
-                if (jumpTimer < jumpLimitTime)
+                if(isGrounded)
                 {
-                    jumpTimer += Time.deltaTime;
-                    Debug.Log(jumpTimer);
+                    if (jumpTimer < jumpLimitTime)
+                    {
+                        jumpTimer += Time.deltaTime;
+                        Debug.Log(jumpTimer);
+                    }
                 }
-                
-
             }
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                forceGameController.InitGauge();
-                forceGameController.gameObject.SetActive(false);
+                isGrounded = false;
                 float interval = jumpLimitTime / (float)maxJumpStep;
-                Debug.Log("interval" + interval);
                 float jumpStep = 0;
                 for (int i = 0; i < maxJumpStep; i++)
                 {
@@ -145,8 +145,18 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-              
+            
             playerRigid.gravityScale =1;
+        }
+    }
+
+    void HideGaugeByVelocity()
+    {
+
+        if (playerRigid.velocity.y > 0)
+        {
+            forceGameController.InitGauge();
+            forceGameController.gameObject.SetActive(false);
         }
     }
 
@@ -154,7 +164,8 @@ public class PlayerController : MonoBehaviour
     {
         LimitPlayerVelocity();
         PlayerJump();
-        ControlPlayerGravityScale();
+        HideGaugeByVelocity();
+       // ControlPlayerGravityScale();
     }
 
     void FixedUpdate()
