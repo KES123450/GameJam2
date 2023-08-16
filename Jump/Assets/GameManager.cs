@@ -9,12 +9,16 @@ public class GameManager : MonoBehaviour
     //public Button startButton;
     [SerializeField] public GameObject startUI;
     [SerializeField] public GameObject pauseUI;
+    [SerializeField] public GameObject endUI;
+    [SerializeField] public Transform playerPos;
+    private Vector3 startPos;
     bool isPause = false;
     [SerializeField] [Range(0f, 5f)] public float playTimeScale;
 
     private void Start()
     {
         Time.timeScale = playTimeScale;
+        startPos = new Vector3(-8.0f, -3.0f, 0.0f);
         GameStart();
     }
     private void Update()
@@ -55,6 +59,11 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void GameRestart()
+    {
+        playerPos.position = startPos;
     }
     
     public void GameExit()
