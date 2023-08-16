@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<PlayerEndingController>().EndingPlay();
             gameObject.GetComponent<PlayerController>().enabled = false;
             Camera.main.GetComponent<CameraController>().enabled = false;
-            Camera.main.transform.position = new Vector3(342.69f, -0.95f, -10);
+            Camera.main.transform.position = new Vector3(431.5f, 1.8f, -10);
         }
     }
     void Update()
