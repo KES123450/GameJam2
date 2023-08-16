@@ -29,6 +29,14 @@ public class BounceBlock : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            BouncingPlayer(collision.gameObject.GetComponent<Rigidbody2D>());
+        }
+    }
+
     float ConvertDegToRad(float deg)
     {
         return (deg * (Mathf.PI / 180));
