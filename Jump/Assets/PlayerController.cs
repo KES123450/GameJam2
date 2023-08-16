@@ -39,6 +39,10 @@ public class PlayerController : MonoBehaviour
     public float stepDuration = 0.1f;
     private bool isWalking = false;
 
+    [SerializeField]
+    private float BounceAnmiationTime = 0.2f;
+    public GameObject BounceEye;
+    private bool BounceAnimOn = false;
 
     void Start()
     {
@@ -147,11 +151,25 @@ public class PlayerController : MonoBehaviour
         playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
     }
 
+    IEnumerator BounceAnimation()
+    {
+        BounceAnimOn = true;
+        BounceEye.SetActive(true);
+        yield return new WaitForSeconds(BounceAnmiationTime);
+        BounceEye.SetActive(false);
+        BounceAnimOn = false;
+
+    }
+
     void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             PlayerBounceBack();
+            if (BounceAnimOn == false)
+            {
+                StartCoroutine(BounceAnimation());
+            }
         }
     }
 
