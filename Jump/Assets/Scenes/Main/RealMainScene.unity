@@ -8745,6 +8745,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 377355508}
+    - target: {fileID: 862294658691236928, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: toTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1239761655605279624, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: force
       value: 10
@@ -8753,6 +8757,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 377355508}
+    - target: {fileID: 1239761655605279624, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: toTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3269500604484446535, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -8761,7 +8769,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 918634335425531814, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+    - {fileID: 8309138489777207411, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+    - {fileID: 7198148202242231723, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+    - {fileID: 2331463730135123449, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
 --- !u!4 &1645723036 stripped
 Transform:
