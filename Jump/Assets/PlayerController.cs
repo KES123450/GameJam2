@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
 
     void CheckEndingByPosX()
     {
-        if(transform.position.x> 320.02f)
+        if(transform.position.x> 412.75f)
         {
             gameObject.GetComponent<PlayerEndingController>().EndingPlay();
             gameObject.GetComponent<PlayerController>().enabled = false;

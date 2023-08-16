@@ -6525,11 +6525,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 341560613, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 341560613, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 341560613, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: initialWaitTime
@@ -6537,19 +6537,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 672543252, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 672543252, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 673537671, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 673537671, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 673537671, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: initialWaitTime
@@ -6557,11 +6557,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 799262665, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 799262665, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 799262665, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: initialWaitTime
@@ -6569,11 +6569,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1672011582, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1672011582, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1672011582, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: initialWaitTime
@@ -6581,11 +6581,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2095505620, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2095505620, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 375400358460046980, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: m_RootOrder
