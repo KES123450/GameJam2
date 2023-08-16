@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     public ForceGameController forceGameController;
 
+    public float minJumpValue;
 
     void Start()
     {
@@ -87,6 +88,9 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                forceGameController.InitGauge();
+                forceGameController.gameObject.SetActive(false);
+
                 isGrounded = false;
                 float interval = jumpLimitTime / (float)maxJumpStep;
                 float jumpStep = 0;
@@ -121,7 +125,7 @@ public class PlayerController : MonoBehaviour
         playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -153,7 +157,7 @@ public class PlayerController : MonoBehaviour
     void HideGaugeByVelocity()
     {
 
-        if (playerRigid.velocity.y > 0)
+        if (playerRigid.velocity.y > minJumpValue)
         {
             forceGameController.InitGauge();
             forceGameController.gameObject.SetActive(false);
