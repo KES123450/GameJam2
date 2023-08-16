@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         startUI.SetActive(true);
         pauseUI.SetActive(false);
+        endUI.SetActive(false);
     }
 
     public void onClickedStartButton()
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         isPause = false;
         pauseUI.SetActive(false);
         startUI.SetActive(false);
+        endUI.SetActive(false);
     }
 
     public void GamePause()
@@ -46,16 +48,13 @@ public class GameManager : MonoBehaviour
         {
             if (!isPause)
             {
-                Time.timeScale = 0;
                 isPause = true;
                 ActiveSettingUI();
                 return;
             }
             else
             {
-                Time.timeScale = playTimeScale;
-                isPause = false;
-                pauseUI.SetActive(false);
+                onClickedStartButton();
                 return;
             }
         }
@@ -64,8 +63,9 @@ public class GameManager : MonoBehaviour
     public void GameRestart()
     {
         playerPos.position = startPos;
+        onClickedStartButton();
     }
-    
+
     public void GameExit()
     {
         Application.Quit();
@@ -73,7 +73,17 @@ public class GameManager : MonoBehaviour
 
     public void ActiveSettingUI()
     {
+        Time.timeScale = 0;
         pauseUI.SetActive(true);
         startUI.SetActive(false);
+        endUI.SetActive(false);
+    }
+
+    public void ActiveEndUI()
+    {
+        Time.timeScale = 0;
+        pauseUI.SetActive(false);
+        startUI.SetActive(false);
+        endUI.SetActive(true);
     }
 }
