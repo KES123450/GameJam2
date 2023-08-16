@@ -5353,11 +5353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8259920133111857625, guid: 29dfa9a540d8f6049a8de0f4731370a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 153.05
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8259920133111857625, guid: 29dfa9a540d8f6049a8de0f4731370a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.72
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 8259920133111857625, guid: 29dfa9a540d8f6049a8de0f4731370a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6265,27 +6265,6 @@ MonoBehaviour:
   toTarget: 0
   target: {fileID: 0}
   deg: 180
-  force: 10
---- !u!1 &903105837 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6390819165849231543, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
-  m_PrefabInstance: {fileID: 1645723035}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &903105841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903105837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48455fa322564d54e9710bdf98f49963, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toTarget: 0
-  target: {fileID: 0}
-  deg: 170
   force: 10
 --- !u!1 &909640960
 GameObject:
@@ -10323,11 +10302,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 341560613, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 341560613, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 341560613, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: initialWaitTime
@@ -10335,19 +10314,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 672543252, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 672543252, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 673537671, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 673537671, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 673537671, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: initialWaitTime
@@ -10355,11 +10334,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 799262665, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 799262665, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 799262665, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: initialWaitTime
@@ -10367,11 +10346,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1672011582, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1672011582, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1672011582, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: initialWaitTime
@@ -10379,11 +10358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2095505620, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: hideWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2095505620, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: showWaitTime
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 375400358460046980, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: m_RootOrder
@@ -11253,7 +11232,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Credit\n- \uACFD\uC778\uC601\n- \uAE40\uC740\uC11C\n- \uC870\uD604\uC6B0"
+  m_text: 'Credit
+
+    - Inyeong Gwak
+
+    - eunseo Kim
+
+    - Hyunwoo Cho'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c715d5388f7f9fd49b12aab75d71b62a, type: 2}
   m_sharedMaterial: {fileID: -475049698017789982, guid: c715d5388f7f9fd49b12aab75d71b62a, type: 2}
