@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 forceGameController.gameObject.SetActive(true);
-                forceGameController.IncreaseSpeedGauge(jumpLimitTime);
+                forceGameController.IncreaseSpeedGauge(jumpLimitTime * 1.5f);
                 isGrounded = true;
             }
 
