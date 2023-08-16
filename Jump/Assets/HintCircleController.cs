@@ -11,7 +11,7 @@ public class HintCircleController : MonoBehaviour
     public float initialMove = 3f;
     public float jumpingDistance = 5f;
     public float finalMove = 5f;
-    public float shrinkValue = 0.5f;
+    public float shrinkValue = 0.99f;
     private Rigidbody2D rb;
     public Vector2 JumpForceVector;
 
@@ -21,6 +21,8 @@ public class HintCircleController : MonoBehaviour
     public float exclamationPointTime = 0.5f;
 
     public float gaugeUpPos;
+
+    public GameObject HintObject;
 
     private void Start()
     {
@@ -36,14 +38,16 @@ public class HintCircleController : MonoBehaviour
     private void StartInitialMove()
     {
         exclamationPoint.SetActive(true);
+       
 
         exclamationPointMask.transform.DOLocalMoveY(gaugeUpPos, exclamationPointTime).OnComplete(() =>
         {
-            transform.DOMoveX(transform.position.x + initialMove, 1f)
-                .SetEase(Ease.Linear)
-                .OnComplete(() => StartBounce());
-
+            exclamationPoint.SetActive(false);
         });
+
+        transform.DOMoveX(transform.position.x + initialMove, 1f)
+            .SetEase(Ease.Linear)
+            .OnComplete(() => StartBounce());
 
 
     }
