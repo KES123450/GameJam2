@@ -114,21 +114,23 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                forceGameController.InitGauge();
-                forceGameController.gameObject.SetActive(false);
-
                 isGrounded = false;
                 float interval = jumpLimitTime / (float)maxJumpStep;
-                float jumpStep = 0;
+                float jumpStep = 0f;
                 for (int i = 0; i < maxJumpStep; i++)
                 {
-                    if (jumpStep >= jumpTimer)
+                    if (jumpTimer <= 0.05f)
+                    {
+                        jumpStep = 0.05f;
+                        break;
+                    }
+                    if (jumpStep - 0.05f <= jumpTimer && jumpStep + 0.05f >= jumpTimer)
                     {
                         break;
                     }
                     jumpStep += interval;
                 }
-                Debug.Log(jumpStep);
+                Debug.Log("jumpStep" + jumpStep);
 
                 Vector2 jumpForceVector = jumpDirection.normalized * jumpStep * jumpForce;
                 playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
@@ -136,7 +138,7 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-        
+
     }
 
     void PlayerBounceBack()
