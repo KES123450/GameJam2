@@ -2080,8 +2080,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7519,6 +7519,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 124.4122
       objectReference: {fileID: 0}
+    - target: {fileID: 2669284311926205726, guid: 6d46c74bb949a654397eea3c7898025e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 112.63537
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669284311926205726, guid: 6d46c74bb949a654397eea3c7898025e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d46c74bb949a654397eea3c7898025e, type: 3}
 --- !u!4 &1349545138 stripped
@@ -10012,13 +10020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Credit
-
-    -
-
-    -
-
-    -'
+  m_text: "Credit\n- \uACFD\uC778\uC601\n- \uAE40\uC740\uC11C\n- \uC870\uD604\uC6B0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c715d5388f7f9fd49b12aab75d71b62a, type: 2}
   m_sharedMaterial: {fileID: -475049698017789982, guid: c715d5388f7f9fd49b12aab75d71b62a, type: 2}
@@ -10027,8 +10029,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
