@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Replica/hyun/ChangedMapScene.unity
+    guid: 383ccddcdc139c14a954b9a543c9892f
   m_configObjects: {}
