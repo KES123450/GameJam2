@@ -37,6 +37,7 @@ public class HintCircleController : MonoBehaviour
 
     private void StartInitialMove()
     {
+        StartCoroutine(destroyFinal());
         exclamationPoint.SetActive(true);
        
 
@@ -75,6 +76,12 @@ public class HintCircleController : MonoBehaviour
             if (collision.gameObject.CompareTag("Ground"))
                 MoveStraight();
         }
+    }
+
+    IEnumerator destroyFinal()
+    {
+        yield return new WaitForSeconds(10f);
+        Destroy(gameObject);
     }
 
 }
