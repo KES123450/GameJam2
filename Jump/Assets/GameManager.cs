@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private Vector3 startPos;
     bool isPause = false;
     [SerializeField] [Range(0f, 5f)] public float playTimeScale;
-
+    
     private void Start()
     {
         Time.timeScale = playTimeScale;
@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     public void GameRestart()
     {
         playerPos.position = startPos;
+        Camera.main.GetComponent<CameraController>().enabled=true;
         onClickedStartButton();
     }
 

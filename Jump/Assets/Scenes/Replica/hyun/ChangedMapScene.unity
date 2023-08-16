@@ -4794,7 +4794,7 @@ MonoBehaviour:
   endingText: {fileID: 642242291}
   creditText: {fileID: 1197199638}
   endingPos: {x: 436.4, y: -2.91, z: 0}
-  GameManager: {fileID: 0}
+  GameManager: {fileID: 1425462509}
 --- !u!1 &787678699
 GameObject:
   m_ObjectHideFlags: 0
@@ -7202,7 +7202,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Credit\n- \uACFD\uC778\uC601\n- \uAE40\uC740\uC11C\n- \uC870\uD604\uC6B0"
+  m_text: 'Credit
+
+    - Inyeong Gwak
+
+    - Eunseo Kim
+
+    - Hyunwoo Cho'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c715d5388f7f9fd49b12aab75d71b62a, type: 2}
   m_sharedMaterial: {fileID: -475049698017789982, guid: c715d5388f7f9fd49b12aab75d71b62a, type: 2}

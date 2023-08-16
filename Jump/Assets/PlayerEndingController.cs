@@ -20,13 +20,13 @@ public class PlayerEndingController : MonoBehaviour
             .Append(endingText.DOFade(1f, 3f))
             .Append(endingText.DOFade(0f, 3f))
             .Append(creditText.DOFade(1f, 3f))
-            .Append(creditText.DOFade(0f, 3f));
+            .Append(creditText.DOFade(0f, 3f))
+            .OnComplete(() => GameManager.ActiveEndUI());
 
     }
 
     public void EndingPlay()
     {
         endSequence.Play();
-        GameManager.ActiveEndUI();
     }
 }
