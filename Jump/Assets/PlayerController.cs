@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+              
             playerRigid.gravityScale =1;
         }
     }
