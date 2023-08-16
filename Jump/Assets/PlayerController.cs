@@ -206,11 +206,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void CheckEndingByPosX()
+    {
+        if(transform.position.x> 320.02f)
+        {
+            gameObject.GetComponent<PlayerEndingController>().EndingPlay();
+            gameObject.GetComponent<PlayerController>().enabled = false;
+            Camera.main.GetComponent<CameraController>().enabled = false;
+            Camera.main.transform.position = new Vector3(342.69f, -0.95f, -10);
+        }
+    }
     void Update()
     {
         LimitPlayerVelocity();
         PlayerJump();
         HideGaugeByVelocity();
+        CheckEndingByPosX();
         // ControlPlayerGravityScale();
 
     }
