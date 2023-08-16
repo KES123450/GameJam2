@@ -1322,10 +1322,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465aebfa0bc0d6d48b597d1aacf87e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyStartHidingTime: 0
-  EnemyHidingTime: 3
-  EnemyShowingTime: 1
-  HidingSpeed: 0.01
+  initialWaitTime: 2
+  hideTime: 1
+  showTime: 1
+  hideWaitTime: 2
+  showWaitTime: 1
 --- !u!1 &249901110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,6 +2163,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1631090636945031231, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631090636945031231, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: showWaitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045104838766411340, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045104838766411340, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: showWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479945504726777428, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479945504726777428, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: showWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3700186659960038504, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2218,6 +2243,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 41.4759
       objectReference: {fileID: 0}
+    - target: {fileID: 4237029249864057656, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237029249864057656, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: showWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7313246149745745538, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7313246149745745538, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: showWaitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670793850692416244, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670793850692416244, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
+      propertyPath: showWaitTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54b48eae74f489c4e9f22b39a7954209, type: 3}
 --- !u!1 &376925621 stripped
@@ -2237,10 +2286,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465aebfa0bc0d6d48b597d1aacf87e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyStartHidingTime: 0
-  EnemyHidingTime: 3
-  EnemyShowingTime: 1
-  HidingSpeed: 0.01
+  initialWaitTime: 2
+  hideTime: 1
+  showTime: 1
+  hideWaitTime: 2
+  showWaitTime: 2
 --- !u!1001 &377184054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4898,11 +4948,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8259920133111857625, guid: 29dfa9a540d8f6049a8de0f4731370a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 348.09
+      value: 161.86
       objectReference: {fileID: 0}
     - target: {fileID: 8259920133111857625, guid: 29dfa9a540d8f6049a8de0f4731370a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.71
+      value: 1.92
       objectReference: {fileID: 0}
     - target: {fileID: 8259920133111857625, guid: 29dfa9a540d8f6049a8de0f4731370a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6860,10 +6910,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465aebfa0bc0d6d48b597d1aacf87e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyStartHidingTime: 0
-  EnemyHidingTime: 3
-  EnemyShowingTime: 1
-  HidingSpeed: 0.01
+  initialWaitTime: 2
+  hideTime: 1
+  showTime: 1
+  hideWaitTime: 2
+  showWaitTime: 1
 --- !u!4 &1239233930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 375400358460046980, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
@@ -9021,10 +9072,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465aebfa0bc0d6d48b597d1aacf87e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyStartHidingTime: 0
-  EnemyHidingTime: 3
-  EnemyShowingTime: 1
-  HidingSpeed: 0.01
+  initialWaitTime: 2
+  hideTime: 1
+  showTime: 1
+  hideWaitTime: 2
+  showWaitTime: 2
 --- !u!1 &1619577739
 GameObject:
   m_ObjectHideFlags: 0
@@ -9319,6 +9371,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1634191091}
     m_Modifications:
+    - target: {fileID: 341560613, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 341560613, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: showWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 341560613, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: initialWaitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 672543252, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 672543252, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: showWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 673537671, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 673537671, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: showWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 673537671, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: initialWaitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 799262665, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 799262665, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: showWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 799262665, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: initialWaitTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672011582, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672011582, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: showWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672011582, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: initialWaitTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095505620, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: hideWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095505620, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
+      propertyPath: showWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 375400358460046980, guid: 0a0883c29bfe44e4cabb3fbe675b7d7d, type: 3}
       propertyPath: m_RootOrder
       value: 12

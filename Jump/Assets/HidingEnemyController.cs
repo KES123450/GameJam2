@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class HidingEnemyController : MonoBehaviour
 {
-    [SerializeField]
-    private float EnemyStartHidingTime;
-    [SerializeField]
-    private float EnemyHidingTime;
-    [SerializeField]
-    private float EnemyShowingTime;
-    [SerializeField]
-    private float HidingSpeed;
+    public float initialWaitTime = 2f;
+    public float hideTime = 1f;
+    public float showTime = 1f;
 
-    private Vector3 targetScale;
+
+    public float hideWaitTime = 1f;
+    public float showWaitTime = 1f;
+
+    private bool isAnimating = false;
     PolygonCollider2D myPolygonCollider;
     BoxCollider2D myBoxCollider;
     Collider2D myCollider;
@@ -27,28 +27,54 @@ public class HidingEnemyController : MonoBehaviour
             myBoxCollider = GetComponent<BoxCollider2D>();
             myCollider = myBoxCollider;
         }
-        targetScale = Vector3.one;
-        StartCoroutine(EnemyHide());
+        Invoke("StartAnimation", initialWaitTime);
     }
 
-    IEnumerator EnemyHide()
+    private void StartAnimation()
     {
-        yield return new WaitForSeconds(EnemyStartHidingTime);
-
-        while (true)
+        if (!isAnimating)
         {
-            targetScale = new Vector3(0, 0.1f, 0);
-            myCollider.enabled = false;
-            yield return new WaitForSeconds(EnemyHidingTime);
-            targetScale = Vector3.one;
-            myCollider.enabled = true;
-            yield return new WaitForSeconds(EnemyShowingTime);
+            HideTrap();
         }
     }
 
-    private void Update()
+    private void HideTrap()
     {
-        transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, HidingSpeed);
+        isAnimating = true;
+        transform.DOScale(new Vector3(0,0.1f,0), hideTime).OnComplete(() =>
+        {
+            myCollider.enabled = false;
+
+            StartCoroutine(Wait1(hideWaitTime));
+
+        });
+    }
+
+    IEnumerator Wait1(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ShowTrap();
+    }
+
+
+    private void ShowTrap()
+    {
+        myCollider.enabled = true;
+
+        transform.DOScale(Vector3.one, showTime).OnComplete(() =>
+        {
+
+            isAnimating = false;
+
+            StartCoroutine(Wait2(showWaitTime));
+
+        });
+    }
+
+    IEnumerator Wait2(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Invoke("HideTrap", hideTime);
     }
 
 }
