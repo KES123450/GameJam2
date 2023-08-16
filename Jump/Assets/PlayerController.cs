@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine; 
+using UnityEngine;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -33,6 +34,12 @@ public class PlayerController : MonoBehaviour
 
     public float minJumpValue;
 
+    public Transform leg1;
+    public Transform leg2;
+    public float stepDuration = 0.1f;
+    private bool isWalking = false;
+
+
     void Start()
     {
         player = gameObject;
@@ -59,9 +66,24 @@ public class PlayerController : MonoBehaviour
                     playerRigid.AddForce(-Vector2.right * playerMoveSpeed);
                 }
             }
+
+            if(isWalking == false&&Mathf.Abs(playerRigid.velocity.x)>0.2f)
+            {
+                MoveLeg(leg1, leg2, 10f);
+            }
+
         }
         
     }
+
+    private void MoveLeg(Transform leg1, Transform leg2, float MoveAngleAbs)
+    {
+        isWalking = true;
+        leg1.DOLocalRotate(new Vector3(0f, 0f, MoveAngleAbs), stepDuration).OnComplete(() => leg1.DOLocalRotate(new Vector3(0f, 0f, -MoveAngleAbs), stepDuration).OnComplete(() => isWalking = false));
+        leg2.DOLocalRotate(new Vector3(0f, 0f, -MoveAngleAbs), stepDuration).OnComplete(() => leg2.DOLocalRotate(new Vector3(0f, 0f, MoveAngleAbs), stepDuration).OnComplete(() => isWalking = false));
+    }
+
+
 
     void PlayerJump()
     {
@@ -169,8 +191,11 @@ public class PlayerController : MonoBehaviour
         LimitPlayerVelocity();
         PlayerJump();
         HideGaugeByVelocity();
-       // ControlPlayerGravityScale();
+        // ControlPlayerGravityScale();
+
     }
+
+
 
     void FixedUpdate()
     {
