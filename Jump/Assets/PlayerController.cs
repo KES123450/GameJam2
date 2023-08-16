@@ -175,6 +175,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            PlayerBounceBack();
+            if (BounceAnimOn == false)
+            {
+                StartCoroutine(BounceAnimation());
+            }
+        }
+    }
+
     void LimitPlayerVelocity()
     {
         if (playerRigid.velocity.magnitude > playerMaxVelocity)
