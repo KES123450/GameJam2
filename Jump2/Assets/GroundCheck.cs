@@ -7,7 +7,7 @@ public class GroundCheck : MonoBehaviour
     public PlayerController playerController;
 
   
-    void OnCollisionStay2D(Collision2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
@@ -16,7 +16,7 @@ public class GroundCheck : MonoBehaviour
         }
     }
 
-    void OnCollisionExit2D(Collision2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
