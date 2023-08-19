@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     public float jumpForce;
     public float bulletJumpForce;
+    public float SuperBulletJumpForce;
     public float jumpLimitTime;
     public int maxJumpStep;
     public float jumpTimer;
@@ -56,7 +57,11 @@ public class PlayerController : MonoBehaviour
     public float targetDrag = 5f;
     private float initialDrag = 0;
     public AnimationCurve DragCurve;
+    public BulletEffectController superEffect;
     public BulletEffectController effect;
+    public Transform arrowFilling;
+    public float startFillingPosY;
+    public ArrowRotationCheck arrowRotationCheck;
 
     void Start()
     {
@@ -167,7 +172,6 @@ public class PlayerController : MonoBehaviour
         {
             //randomDirection = new Vector3(0.2f, 1f);
         }*/
-        Debug.Log(randomDirection);
         //float randomJumpForce = Random.Range(minBackBounceForce, maxBackBounceForce);
         Vector2 jumpForceVector = randomDirection.normalized * maxBackBounceForce;
 
@@ -207,14 +211,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-      
 
     private float GetAngle(Vector3 vStart, Vector3 vEnd)
     {
         Vector3 v = vEnd - vStart;
-
+        //  Debug.Log(Mathf.Atan2(v.y, v.x));
         return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
     }
+
+    private float preciousAngle;
+    private float changeAngleSum;
+    public bool isSuperBullet;
 
     private Vector3 GetBulletAngle()
     {
@@ -223,15 +230,36 @@ public class PlayerController : MonoBehaviour
         Vector3 mouseWorldPos = (Camera.main.ScreenToWorldPoint(mousePos));
         Vector3 targetVector = (mouseWorldPos - transform.position);
         bulletAngle = GetAngle(transform.position, mouseWorldPos)-90;
+        
         Vector3 bulletDirection= new Vector3(0,0,bulletAngle);
+/*
+        bulletAngle += 180;
+        if(Mathf.Abs(preciousAngle - bulletAngle) <=355)
+        {
+            changeAngleSum += Mathf.Abs(preciousAngle - bulletAngle);
+        }
+       
+
+        if (Mathf.Abs(changeAngleSum)>=275)
+        {
+            isSuperBullet = true;
+            bulletDirectionArrow.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
+            bulletDirectionArrow.GetChild(1).GetComponent<SpriteRenderer>().color = Color.red;
+
+        }
+        preciousAngle = bulletAngle;*/
+
+
+       
+
         return bulletDirection;
         
     }
 
     private void StartBulletTime()
     {
-
-        if (bulletDashNum > 0&&!isPlayerJump)
+        
+        if (bulletDashNum > 0&&isPlayerJump)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -240,30 +268,68 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
-                Time.timeScale = 0.1f;
+                //Time.timeScale = 0.1f;
                 Vector3 bulletDirection = GetBulletAngle();
                 bulletDirectionArrow.gameObject.SetActive(true);
                 bulletDirectionArrow.eulerAngles = bulletDirection;
+
+                if (arrowRotationCheck.rotateHitNum >= 4)
+                {
+                    isSuperBullet = true;
+                    bulletDirectionArrow.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
+                    bulletDirectionArrow.GetChild(1).GetComponent<SpriteRenderer>().color = Color.red;
+                }
+
 
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                effect.EffectPlay();
-                cameraController.EndBulletDash();
-                LowerBulletDashNum();
-                bulletDirectionArrow.gameObject.SetActive(false);
-                Vector3 mousePos = Input.mousePosition;
-                Vector3 mouseWorldPos = (Camera.main.ScreenToWorldPoint(mousePos));
-                playerRigid.velocity = new Vector2(0, 0);
-                playerRigid.drag = targetDrag;
-                Vector2 bulletDirection = ((Vector2)(mouseWorldPos - transform.position)).normalized;
-                playerRigid.AddForce(bulletDirection * bulletJumpForce, ForceMode2D.Impulse);
+                bulletDirectionArrow.GetChild(0).GetComponent<SpriteRenderer>().color = Color.gray;
+                bulletDirectionArrow.GetChild(1).GetComponent<SpriteRenderer>().color = Color.gray;
+                arrowRotationCheck.rotateHitNum = 0;
+                if (isSuperBullet)
+                {
+                    isSuperBullet = false;
+                    changeAngleSum = 0;
+                    superEffect.EffectPlay();
+                    cameraController.EndBulletDash();
+                    LowerBulletDashNum();
+                    bulletDirectionArrow.gameObject.SetActive(false);
+                    Vector3 mousePos = Input.mousePosition;
+                    Vector3 mouseWorldPos = (Camera.main.ScreenToWorldPoint(mousePos));
+                    playerRigid.velocity = new Vector2(0, 0);
+                    playerRigid.drag = targetDrag;
+                    Vector2 bulletDirection = ((Vector2)(mouseWorldPos - transform.position)).normalized;
+                    playerRigid.AddForce(bulletDirection * SuperBulletJumpForce, ForceMode2D.Impulse);
 
-                StartCoroutine(DecreaseDrag());
+                    StartCoroutine(DecreaseDrag());
 
-                Time.timeScale = 1.5f;
-                
+                    Time.timeScale = 1.5f;
+
+                }
+                else
+                {
+                    isSuperBullet = false;
+                    changeAngleSum = 0;
+                    effect.EffectPlay();
+                    cameraController.EndBulletDash();
+                    LowerBulletDashNum();
+                    bulletDirectionArrow.gameObject.SetActive(false);
+                    Vector3 mousePos = Input.mousePosition;
+                    Vector3 mouseWorldPos = (Camera.main.ScreenToWorldPoint(mousePos));
+                    playerRigid.velocity = new Vector2(0, 0);
+                    playerRigid.drag = targetDrag;
+                    Vector2 bulletDirection = ((Vector2)(mouseWorldPos - transform.position)).normalized;
+                    playerRigid.AddForce(bulletDirection * bulletJumpForce, ForceMode2D.Impulse);
+
+                    StartCoroutine(DecreaseDrag());
+
+                    Time.timeScale = 1.5f;
+                }
+
+
+
             }
         }
         

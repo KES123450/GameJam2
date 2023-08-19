@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BulletEffect
-  m_Shader: {fileID: 4800000, guid: 30290aa1daaeb5e498456dec71a0c265, type: 3}
+  m_Name: SuperBulletEffect
+  m_Shader: {fileID: 4800000, guid: ab1e024f46a89c242bace193d7a786f4, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -58,7 +58,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BumpAmt: 10
+    - _BumpAmt: 27.6
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1

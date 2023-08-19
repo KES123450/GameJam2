@@ -7,12 +7,13 @@ public class BulletEffectController : MonoBehaviour
 {
     public GameObject BulletEffect;
     public Vector3 targetScale;
+    public float scaleSpeed;
     private Sequence effect;
     void Start()
     {
         // 트윈 정의
         effect = DOTween.Sequence().Pause().SetAutoKill(false);
-        effect.Append(transform.DOScale(targetScale, 1f));
+        effect.Append(transform.DOScale(targetScale, scaleSpeed));
         effect.OnComplete(() => DisableObject());
     }
     private void DisableObject()
