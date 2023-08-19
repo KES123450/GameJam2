@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = playTimeScale;
         startPos = new Vector3(-8.0f, -3.0f, 0.0f);
-        GameStart();
+        //GameStart();
     }
     private void Update()
     {
@@ -87,4 +87,6 @@ public class GameManager : MonoBehaviour
         startUI.SetActive(false);
         endUI.SetActive(true);
     }
+
+   
 }

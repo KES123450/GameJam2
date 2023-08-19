@@ -8,6 +8,13 @@ public class PlayerController : MonoBehaviour
 
     public GameObject player;
     public Rigidbody2D playerRigid;
+    public int nowHP;
+    public int bulletDashNum;
+
+    public PlayerInfoUIManager HPManager;
+    public PlayerInfoUIManager DashManager;
+    public CameraController cameraController;
+
     public float playerFallGravityScale;
     public float playerMaxVelocity;
     public float playerMoveSpeed;
@@ -17,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public bool isPlayerMove;
     private bool isGrounded;
     public float jumpForce;
+    public float bulletJumpForce;
     public float jumpLimitTime;
     public int maxJumpStep;
     public float jumpTimer;
@@ -43,6 +51,12 @@ public class PlayerController : MonoBehaviour
     private float BounceAnmiationTime = 0.2f;
     public GameObject BounceEye;
     private bool BounceAnimOn = false;
+    public Transform bulletDirectionArrow;
+    public float dragDuration;
+    public float targetDrag = 5f;
+    private float initialDrag = 0;
+    public AnimationCurve DragCurve;
+    public BulletEffectController effect;
 
     void Start()
     {
@@ -50,11 +64,45 @@ public class PlayerController : MonoBehaviour
         playerRigid = gameObject.GetComponent<Rigidbody2D>();
     }
 
+    public void LowerHP()
+    {
+        nowHP -= 1;
+        HPManager.DeletePrefab();
+    }
+
+    public void UpperHP()
+    {
+        nowHP += 1;
+        HPManager.AddPrefab();
+    }
+
+    public void UpperBulletDashNum()
+    {
+        if (bulletDashNum >= 4)
+        {
+            return;
+        }
+        bulletDashNum += 1;
+        DashManager.AddPrefab();
+    }
+
+    public void LowerBulletDashNum()
+    {
+        bulletDashNum -= 1;
+        DashManager.DeletePrefab();
+    }
+
+    public void InitBulletDashNum()
+    {
+        bulletDashNum  = 1;
+        DashManager.InitInfo();
+    }
+
     void PlayerMove()
     {
         if (isPlayerMove)
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.D))
             {
                 if (playerRigid.velocity.magnitude < playerMaxSpeed)
                 {
@@ -63,7 +111,7 @@ public class PlayerController : MonoBehaviour
                 
             }
 
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.A))
             {
                 if (playerRigid.velocity.magnitude < playerMaxSpeed)
                 {
@@ -93,62 +141,35 @@ public class PlayerController : MonoBehaviour
     {
         if (isPlayerJump)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                forceGameController.gameObject.SetActive(true);
-                forceGameController.IncreaseSpeedGauge(jumpLimitTime * 1.5f);
+            if (Input.GetKeyDown(KeyCode.W)) { 
                 isGrounded = true;
+
+                Vector2 jumpForceVector = jumpDirection.normalized * jumpForce;
+                playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
             }
 
-            if (Input.GetKey(KeyCode.Space))
-            {
-                if(isGrounded)
-                {
-                    if (jumpTimer < jumpLimitTime)
-                    {
-                        jumpTimer += Time.deltaTime;
-                        Debug.Log(jumpTimer);
-                    }
-                }
-            }
-
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.W))
             {
                 isGrounded = false;
-                float interval = jumpLimitTime / (float)maxJumpStep;
-                float jumpStep = 0f;
-                for (int i = 0; i < maxJumpStep; i++)
-                {
-                    if (jumpTimer <= 0.05f)
-                    {
-                        jumpStep = 0.05f;
-                        break;
-                    }
-                    if (jumpStep - 0.05f <= jumpTimer && jumpStep + 0.05f >= jumpTimer)
-                    {
-                        break;
-                    }
-                    jumpStep += interval;
-                }
-                Debug.Log("jumpStep" + jumpStep);
-
-                Vector2 jumpForceVector = jumpDirection.normalized * jumpStep * jumpForce;
-                playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
-                jumpTimer = 0;
-
+                
             }
         }
-
     }
+
+    
 
     void PlayerBounceBack()
     {
-        float randomDirectionX = Random.Range(minBackBounceX, maxBackBounceX);
-        float randomDirectionY = Random.Range(minBackBounceY, maxBackBounceY);
+        float randomDirectionX = playerRigid.velocity.x;
+        float randomDirectionY = playerRigid.velocity.y;
         Vector2 randomDirection = new Vector2(randomDirectionX, randomDirectionY);
-        float randomJumpForce = Random.Range(minBackBounceForce, maxBackBounceForce);
-        Debug.Log("nowForce : " + randomJumpForce);
-        Vector2 jumpForceVector = randomDirection.normalized *randomJumpForce;
+        /*if (randomDirection.x == 0 || randomDirection.y == 0)
+        {
+            //randomDirection = new Vector3(0.2f, 1f);
+        }*/
+        Debug.Log(randomDirection);
+        //float randomJumpForce = Random.Range(minBackBounceForce, maxBackBounceForce);
+        Vector2 jumpForceVector = randomDirection.normalized * maxBackBounceForce;
 
         playerRigid.AddForce(jumpForceVector, ForceMode2D.Impulse);
     }
@@ -163,18 +184,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void OnCollisionStay2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            PlayerBounceBack();
-            if (BounceAnimOn == false)
-            {
-                StartCoroutine(BounceAnimation());
-            }
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -184,8 +193,11 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(BounceAnimation());
             }
+            InitBulletDashNum();
+            LowerHP();
         }
     }
+
 
     void LimitPlayerVelocity()
     {
@@ -195,47 +207,86 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ControlPlayerGravityScale()
+      
+
+    private float GetAngle(Vector3 vStart, Vector3 vEnd)
     {
-        if (playerRigid.velocity.y < 0)
-        {
-            playerRigid.gravityScale = playerFallGravityScale;
-        }
-        else
-        {
-            
-            playerRigid.gravityScale =1;
-        }
+        Vector3 v = vEnd - vStart;
+
+        return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
     }
 
-    void HideGaugeByVelocity()
+    private Vector3 GetBulletAngle()
     {
-
-        if (playerRigid.velocity.y > minJumpValue)
-        {
-            forceGameController.InitGauge();
-            forceGameController.gameObject.SetActive(false);
-        }
+        float bulletAngle;
+        Vector3 mousePos= Input.mousePosition;
+        Vector3 mouseWorldPos = (Camera.main.ScreenToWorldPoint(mousePos));
+        Vector3 targetVector = (mouseWorldPos - transform.position);
+        bulletAngle = GetAngle(transform.position, mouseWorldPos)-90;
+        Vector3 bulletDirection= new Vector3(0,0,bulletAngle);
+        return bulletDirection;
+        
     }
 
-    void CheckEndingByPosX()
+    private void StartBulletTime()
     {
-        if(transform.position.x> 412.75f)
+
+        if (bulletDashNum > 0&&!isPlayerJump)
         {
-            gameObject.GetComponent<PlayerEndingController>().EndingPlay();
-            gameObject.GetComponent<PlayerController>().enabled = false;
-            Camera.main.GetComponent<CameraController>().enabled = false;
-            Camera.main.transform.position = new Vector3(431.5f, 1.8f, -10);
+            if (Input.GetMouseButtonDown(0))
+            {
+                cameraController.StartBulletDash();
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                Time.timeScale = 0.1f;
+                Vector3 bulletDirection = GetBulletAngle();
+                bulletDirectionArrow.gameObject.SetActive(true);
+                bulletDirectionArrow.eulerAngles = bulletDirection;
+
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                effect.EffectPlay();
+                cameraController.EndBulletDash();
+                LowerBulletDashNum();
+                bulletDirectionArrow.gameObject.SetActive(false);
+                Vector3 mousePos = Input.mousePosition;
+                Vector3 mouseWorldPos = (Camera.main.ScreenToWorldPoint(mousePos));
+                playerRigid.velocity = new Vector2(0, 0);
+                playerRigid.drag = targetDrag;
+                Vector2 bulletDirection = ((Vector2)(mouseWorldPos - transform.position)).normalized;
+                playerRigid.AddForce(bulletDirection * bulletJumpForce, ForceMode2D.Impulse);
+
+                StartCoroutine(DecreaseDrag());
+
+                Time.timeScale = 1.5f;
+                
+            }
         }
+        
+    }
+
+    private IEnumerator DecreaseDrag()
+    {
+        float timer=0;
+        while (timer < dragDuration)
+        {
+            playerRigid.drag = DragCurve.Evaluate(timer);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        playerRigid.drag = initialDrag;
+
     }
     void Update()
     {
         LimitPlayerVelocity();
+        StartBulletTime();
         PlayerJump();
-        HideGaugeByVelocity();
-        CheckEndingByPosX();
-        // ControlPlayerGravityScale();
-
     }
 
 

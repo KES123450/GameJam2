@@ -13,6 +13,7 @@ public class GroundCheck : MonoBehaviour
         {
             playerController.isPlayerJump = true;
             playerController.isPlayerMove = true;
+            playerController.InitBulletDashNum();
         }
     }
 
